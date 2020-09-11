@@ -37,7 +37,7 @@ dev_requirements = [
     "wheel>=0.34.2",
 ]
 
-requirements = []
+requirements = ["numpy", "pandas", "tqdm"]
 
 extra_requirements = {
     "setup": setup_requirements,
@@ -62,7 +62,7 @@ setup(
     description="Cleans REDCap data for the Save Access to Maternal Medicines study. Will outpuot clean data files ready for processing",
     entry_points={
         "console_scripts": [
-            "my_example=samm_rdp.bin.my_example:main"
+            "samm_rdp=samm_rdp.bin.process:main"
         ],
     },
     install_requires=requirements,

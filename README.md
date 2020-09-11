@@ -12,21 +12,36 @@ Cleans REDCap data for the Save Access to Maternal Medicines study. Will outpuot
 * Store values and retain the prior value in memory
 * ... some other functionality
 
-## Quick Start
-```python
-from samm_rdp import Example
-
-a = Example()
-a.get_value()  # 10
-```
 
 ## Installation
 **Stable Release:** `pip install samm_rdp`<br>
 **Development Head:** `pip install git+https://github.com/mollyblank/samm_rdp.git`
 
+## Quick Start
+```python
+from samm_rdp import process
+
+csv_path = "Path to csv file"
+timepoints_out_path = "Path to output timepoints file"
+patients_out_path = "Path to output patients file"
+
+process.process(csv_path=csv_path, timepoints_out_path=timepoints_out_path, patients_out_path=patients_out_path))
+# This will take a little bit of time
+```
+Alternatively you can run this from the command line with:
+```bash
+samm_rdp \
+  --csv_path "D:\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\Renamed_SAMM_CURRENT_COMPLETE_combined2.csv" \
+  --timepoints_out_path "timepoints.csv" \
+  --patients_out_path "patients.csv"
+```
+
+
+<!-- 
 ## Documentation
 For full package documentation please visit [mollyblank.github.io/samm_rdp](https://mollyblank.github.io/samm_rdp).
-
+ -->
+<!-- 
 ## Development
 See [CONTRIBUTING.md](CONTRIBUTING.md) for information related to developing the code.
 
@@ -124,4 +139,4 @@ well defined PR's.
 commits to the other branch instead of properly rebasing from what I can tell. You
 should always rebase locally on the CLI until they fix it.
 
-
+ -->
