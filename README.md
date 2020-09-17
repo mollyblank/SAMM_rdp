@@ -1,27 +1,30 @@
 # SAMM Raw Data Processing
 
-[![Build Status](https://github.com/mollyblank/samm_rdp/workflows/Build%20Master/badge.svg)](https://github.com/mollyblank/samm_rdp/actions)
-[![Documentation](https://github.com/mollyblank/samm_rdp/workflows/Documentation/badge.svg)](https://mollyblank.github.io/samm_rdp)
-[![Code Coverage](https://codecov.io/gh/mollyblank/samm_rdp/branch/master/graph/badge.svg)](https://codecov.io/gh/mollyblank/samm_rdp)
-
 Cleans REDCap data for the Save Access to Maternal Medicines study. Will outpuot clean data files ready for processing
 
 ---
 
 ## Features
-* Store values and retain the prior value in memory
-* ... some other functionality
+* Inputs the csv from REDCap, and structures the output into an easy file for data processing
 
 
 ## Installation
 **Stable Release:** `pip install samm_rdp`<br>
 **Development Head:** `pip install git+https://github.com/mollyblank/samm_rdp.git`
 
+## Raw Data Preparation 
+To prepare the csv as input:
+* Download the csv with labels from REDCap 
+* Replace the labels with the label row from 'INTERVENTION_interim_LABELS.csv'
+* Save to a directory of choice
+
 ## Quick Start
+You must do the raw data preparation described above. Once you have the csv file ready and its file name/location, here are the steps to run this code: 
+
 ```python
 from samm_rdp import process
 
-csv_path = "Path to csv file"
+csv_path = "Path to csv prepared raw data file"
 timepoints_out_path = "Path to output timepoints file"
 patients_out_path = "Path to output patients file"
 
@@ -31,7 +34,7 @@ process.process(csv_path=csv_path, timepoints_out_path=timepoints_out_path, pati
 Alternatively you can run this from the command line with:
 ```bash
 samm_rdp \
-  --csv_path "D:\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\Renamed_SAMM_CURRENT_COMPLETE_combined2.csv" \
+  --csv_path "D:\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\SAMM_CONTROL_HEADERS.csv" \
   --timepoints_out_path "timepoints.csv" \
   --patients_out_path "patients.csv"
 ```

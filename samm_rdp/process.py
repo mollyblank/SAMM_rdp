@@ -39,6 +39,8 @@ def format_timepoint_data(timepoint, temp_date, index):
         
         timepoint.restart_time = datetime.time(pd.to_datetime(timepoint.restart_time)[index])
         timepoint.restart_time = datetime.combine(temp_date, timepoint.restart_time[index])
+
+
         
         return timepoint 
     
@@ -57,8 +59,12 @@ def midnight_rollover_check(prev_time, next_time, temp_date):
     return next_time, temp_date
 
 def weight_mass_change(current_weight, previous_weight):
-    weight_delta = current_weight - previous_weight
-    mass_delta = weight_delta * 101.9716
+    weight_delta = current_weight - previous_weight # in the original unit, either Newtons or ounces 
+    # ADD WEIGHT CHECK HERE - is it the spring or the digital 
+ 
+    # mass_delta = weight_delta * 101.9716 # the mass in grams 
+    mass_delta = weight_delta * 28.35 # the mass from oz to grams 
+
     
     return weight_delta, mass_delta 
 
@@ -262,9 +268,9 @@ def parse_raw_row(raw_row, index):
 # STARTING CODE  ------- 
 # --- IMOPRT DATA FROM REDCAP FILE
 def process(
-    csv_path='Renamed_SAMM_CURRENT_COMPLETE_combined2.csv', 
-    timepoints_out_path=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_timepoints_8.11.csv',
-    patients_out_path=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_patient_info_8.11.csv'
+    csv_path='SAMM_CONTROL_HEADERS.csv', 
+    timepoints_out_path=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_timepoints.csv',
+    patients_out_path=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_patients.csv'
     ):
 
     raw = pd.read_csv(csv_path, header=None) 
@@ -304,11 +310,6 @@ def process(
     #%%
 
     # SAVE TO FILE 
-
-    #timepoints_to_csv.to_csv('D:\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_timepoints_8.11.csv')
-    #patients_to_csv.to_csv('D:\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_patient_info_8.11.csv')
-
-
     timepoints_to_csv.to_csv(timepoints_out_path)
     patients_to_csv.to_csv(patients_out_path)
 

@@ -22,18 +22,18 @@ def main():
     p.add_argument(
         "--csv_path",
         type=str,
-        default='Renamed_SAMM_CURRENT_COMPLETE_combined2.csv',
+        default='SAMM_CONTROL_HEADERS.csv',
     )
     p.add_argument(
         "--timepoints_out_path",
         type=str,
-        default=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_timepoints_8.11.csv',
+        default=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_timepoints.csv',
         help="The first argument value",
     )
     p.add_argument(
         "--patients_out_path",
         type=str,
-        default=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_patient_info_8.11.csv',
+        default=r'C:\Users\Molly Blank\Dropbox (Shift Labs)\Shift Labs Team folder (1)\Grants\SLAB USAID\DATA - Study summary reports - data - analysis\Data processing\processed_patient_info.csv',
         help="The first argument value",
     )
     

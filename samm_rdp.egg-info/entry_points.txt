@@ -1,0 +1,3 @@
+[console_scripts]
+samm_rdp = samm_rdp.bin.process:main
+
