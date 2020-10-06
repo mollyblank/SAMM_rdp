@@ -173,10 +173,10 @@ def parse_timepoint_row(timepoint_row, patient, index):
             current_rate = pd.to_numeric(timepoint.prescribed_rate_dpm[index], errors = 'coerce')
             # so if there's a jump of 20dpm or more, there is an increase in rate between measurements
             if np.abs(prev_rate - current_rate) > 20 :
-                prescribed_rate = current_rate
+                prescribed_rate = (prev_rate + current_rate)/2 
             else: 
                 # otherwise default to the current rate being the point of comparison
-                prescribed_rate = (prev_rate + current_rate)/2 
+                prescribed_rate = current_rate
             
             timepoint['observ_rate_error']= timepoint['observ_avg_rate_ml/hr']-(prescribed_rate*3) # x3 is from: dpm * 20 gtt * 60 min/hr
             timepoint['observ_rate_error_ratio']= timepoint['observ_avg_rate_ml/hr']/(prescribed_rate*3)
